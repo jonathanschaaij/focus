@@ -1,0 +1,9 @@
+#system default
+127.0.0.1	localhost
+127.0.1.1	nerd-weapon
+
+#BLACKLIST AGAINST PROCRASTINATION
+127.0.0.1   www.youtube.com
+127.0.0.1   youtube.com
+127.0.0.1   reddit.com
+127.0.0.1   www.reddit.com

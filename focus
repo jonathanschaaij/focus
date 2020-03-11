@@ -23,7 +23,7 @@ if [[ $CHOICE = '-b' ]] ; then  #Block distracting websites
     fi
 
     cp $LOC/hosts/block $HOSTFILE
-    echo $(($CT+$WAITTIME)) > $LOC/.hosts/blocktime
+    echo $(($CT+$WAITTIME)) > $LOC/hosts/blocktime
     echo 'Websites have been blocked and can be unblocked after '$WAITTIME' seconds.'
 elif [[ $CHOICE = '-u' ]]; then #unblock distracting websites
     if [[ $CT -gt $BT ]]; then

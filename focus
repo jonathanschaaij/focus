@@ -9,7 +9,7 @@ LOC=$HOME'/Applications/Scripts'
 CT=$(date '+%s')  #current time
 BT=$(cat $LOC/hosts/blocktime) #Time until websites are blocked
 
-RT=$(($BT-$CT)) #Time remaining
+RT=$((($BT-$CT)/60)) #Time remaining
 
 if [[ $CHOICE = '-b' ]] ; then  #Block distracting websites
     if [[ -n $2 ]]; then
@@ -23,15 +23,15 @@ if [[ $CHOICE = '-b' ]] ; then  #Block distracting websites
     fi
 
     cp $LOC/hosts/block $HOSTFILE
-    echo $(($CT+$WAITTIME)) > $LOC/hosts/blocktime
-    echo 'Websites have been blocked and can be unblocked after '$WAITTIME' seconds.'
+    echo $(($CT+($WAITTIME*60))) > $LOC/hosts/blocktime
+    echo 'Websites have been blocked and can be unblocked after '$WAITTIME' minutes.'
 elif [[ $CHOICE = '-u' ]]; then #unblock distracting websites
     if [[ $CT -gt $BT ]]; then
       cp $LOC/hosts/unblock $HOSTFILE
       echo 'Websites have been cleared'
     else
       echo "Can't unblock websites. Focus!"
-      echo  'Time remaining: '$(($BT-$CT))'sec.'
+      echo  'Time remaining: '$RT' min.'
     fi
 else
     echo 'Please choose to block or unblock (-b or -u) distracting websites.'
